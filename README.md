@@ -56,8 +56,6 @@ dotnet build
 ## Train the model
 
 Training requires a TSV file named `sentiment_data.tsv` to be available in the application working directory (the app expects it at runtime relative to `AppContext.BaseDirectory`). The file should have a header and two columns: `Text` and `Label`.
-
-Example training command (CLI):
 
 # Train and save the model to SentimentModel.zip
 dotnet run -- train

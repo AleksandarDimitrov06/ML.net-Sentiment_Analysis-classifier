@@ -50,15 +50,19 @@ The goal is a minimal, clear example you can extend for production scenarios.
 From Visual Studio: open the solution and press **Build**.
 
 From the command line:
-
-dotnet build
+
+
+dotnet build
+
 
 ## Train the model
 
 Training requires a TSV file named `sentiment_data.tsv` to be available in the application working directory (the app expects it at runtime relative to `AppContext.BaseDirectory`). The file should have a header and two columns: `Text` and `Label`.
-
+
+
 # Train and save the model to SentimentModel.zip
-dotnet run -- train
+dotnet run -- train
+
 
 When run from Visual Studio, the working directory is usually the build output (e.g. `bin/Debug/net8.0`). Put `sentiment_data.tsv` there or update `dataPath` in `Program.cs`.
 
@@ -67,11 +71,13 @@ After training, the saved model will be written to `SentimentModel.zip` in the s
 ## Run predictions (interactive)
 
 Make sure `SentimentModel.zip` exists in the working directory (either because you trained it or you copied it there). Run:
-
+
+
 # Runs interactive prediction (default)
 dotnet run -- predict
 # or simply
-dotnet run
+dotnet run
+
 
 Type a review at the prompt and press Enter. Type `Close` (or press Enter on an empty line) to exit.
 
@@ -83,10 +89,12 @@ The project expects a tab-separated file (`.tsv`) with a header and two columns.
 2. `Label` — boolean indicating positive (true) or negative (false).
 
 Example `sentiment_data.tsv`:
-
+
+
 Text	Label
 "I loved the product, it works perfectly"	true
-"Terrible experience, will not buy again"	false
+"Terrible experience, will not buy again"	false
+
 
 Be careful with quoting and tabs when producing the file.
 

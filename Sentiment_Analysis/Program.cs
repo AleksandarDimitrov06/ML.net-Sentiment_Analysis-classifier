@@ -21,9 +21,23 @@ if (mode.Equals("train", StringComparison.OrdinalIgnoreCase))
 
 if (!File.Exists(modelPath))
 {
-    Console.WriteLine($"Error: Model file not found: {modelPath}");
-    Console.WriteLine("Run: dotnet run -- train");
-    return;
+    Console.WriteLine($"Model not found: {modelPath}");
+    Console.WriteLine("Training a new model...");
+
+    if (!File.Exists(dataPath))
+    {
+        Console.WriteLine($"Error: Training data file not found: {dataPath}");
+        Console.WriteLine("Place 'sentiment_data.tsv' in the output folder or update the path in Program.cs.");
+        return;
+    }
+
+    SentimentModelTrainer.TrainAndSave(dataPath, modelPath);
+
+    if (!File.Exists(modelPath))
+    {
+        Console.WriteLine("Error: Training completed but the model file was not created.");
+        return;
+    }
 }
 
 var predictor = SentimentPredictor.Load(modelPath);

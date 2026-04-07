@@ -8,7 +8,7 @@ namespace Sentiment_Analysis
 {
     public class ModelOutput
     {
-        public bool PredictedLabel { get; set; } // The model's guess
-        public float Score { get; set; }         // How confident it is
+        public bool PredictedLabel { get; set; } 
+        public float Score { get; set; }         
     }
 }
